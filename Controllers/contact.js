@@ -1,3 +1,5 @@
-exports.renderContact = (req,res) => {
-    res.sendFile(process.cwd() + "/Views/contact.html");
-}
+const contact = (req, res) => {
+    res.send(req.body);
+  }
+  
+  export default { contact }

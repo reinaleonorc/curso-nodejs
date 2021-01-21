@@ -1,18 +1,18 @@
-const express = require('express');
-const path = require('path');
+import express from 'express'
+import dotenv from 'dotenv'
+import blogRouter from './routes/blog.js'
+import contactRouter from './routes/contact.js'
+import authRouter from './routes/auth.js'
+import userRotuer from './routes/user.js'
 
-const homeRouter = require('./Routes/home');
-const blogRouter = require('./Routes/blog');
-const aboutRouter = require('./Routes/about');
-const contactRouter = require('./Routes/contact');
+dotenv.config()
 
 const server = express();
-server.use(express.static(path.join(__dirname, 'public')));
-
-server.use('/', homeRouter);
-server.use('/about', aboutRouter)
+server.use(express.json())
+server.use('/auth', authRouter);
+server.use("user",userRotuer)
 server.use('/blog', blogRouter);
 server.use('/contact', contactRouter);
-server.listen(8080);
 
+server.listen(8080);
 

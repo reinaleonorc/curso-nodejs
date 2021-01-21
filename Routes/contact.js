@@ -1,5 +1,10 @@
-const express = require('express');
-const controller = require('../Controllers/contact.js');
-const router = express.Router();
-router.get('/'+ controller.renderContact);
-module.exports = router;
+import express from 'express'
+import controller from '../controllers/contact.js'
+import bodyParser from 'body-parser'
+
+const router = express.Router()
+router.use(bodyParser.urlencoded({ extended: true }));
+
+router.post('/', controller.contact);
+
+export default router
